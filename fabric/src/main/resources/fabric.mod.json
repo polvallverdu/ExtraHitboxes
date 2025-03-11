@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "extrahitboxes",
+  "version": "${version}",
+  "name": "ExtraHitboxes",
+  "description": "Adds the ability to have custom hitboxes with geckolib and blockbench",
+  "authors": [
+    "DarkPred (inspired)",
+    "Pol"
+  ],
+  "contact": {
+    "homepage": "polv.dev"
+  },
+  "license": "Apache-2.0",
+  "icon": "assets/extrahitboxes/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.polv.extrahitboxes.fabric.ExtraHitboxesFabric"
+    ],
+    "client": [
+      "dev.polv.extrahitboxes.fabric.client.ExtraHitboxesFabricClient"
+    ]
+  },
+  "mixins": [
+    "extrahitboxes.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
