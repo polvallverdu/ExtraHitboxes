@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "package": "dev.polv.extrahitboxes.neoforge.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "AbstractClientPlayerMixin",
+    "EntityRenderDispatcherMixin",
+    "MinecraftMixin"
+  ],
+  "mixins": [
+    "ClientEntityMixin",
+    "ClientMobMixin",
+    "EntityHitResultMixin",
+    "EntityMixin",
+    "GeckoLibMobMixin",
+    "GeoEntityRendererMixin",
+    "LevelMixin",
+    "MobMixin",
+    "PlayerMixin",
+    "ProjectileUtilMixin",
+    "TransientEntitySectionManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

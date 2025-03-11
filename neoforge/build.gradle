@@ -40,6 +40,8 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+
+    compileOnly annotationProcessor('com.google.auto.service:auto-service:1.1.1')
 }
 
 processResources {
