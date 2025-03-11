@@ -10,14 +10,13 @@ import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ReloadableResourceManager;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
 @ApiStatus.Internal
-@EventBusSubscriber(modid = ExtraHitboxes.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExtraHitboxes.MOD_ID)
 @AutoService(ResourcePackRegistry.class)
 public class ForgeResourcePackRegistry implements ResourcePackRegistry {
     private static final List<PreparableReloadListener> serverDataReloadListeners = Lists.newArrayList();

@@ -14,7 +14,7 @@
     "EntityHitResultMixin",
     "EntityMixin",
     "GeckoLibMobMixin",
-    "GeoEntityRendererMixin",
+    "GeoRendererMixin",
     "LevelMixin",
     "MobMixin",
     "PlayerMixin",

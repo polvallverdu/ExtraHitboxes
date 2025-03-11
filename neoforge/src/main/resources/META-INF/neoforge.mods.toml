@@ -35,4 +35,4 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "extrahitboxes.mixins.json"
+config = "extrahitboxes-neoforge.mixins.json"
