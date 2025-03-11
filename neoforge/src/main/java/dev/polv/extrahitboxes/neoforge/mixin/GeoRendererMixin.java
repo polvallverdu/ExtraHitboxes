@@ -20,13 +20,13 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.renderer.GeoRenderer;
 
 @Mixin(GeoRenderer.class)
-public abstract class GeoRendererMixin<T extends GeoAnimatable> {
+public interface GeoRendererMixin<T extends GeoAnimatable> {
 
     @Unique
     public abstract T extrahitboxes$getAnimatable();
 
     @Inject(method = "renderCubesOfBone", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lsoftware/bernie/geckolib/cache/object/GeoBone;isHidden()Z"))
-    public void getBonePositions(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
+    public default void getBonePositions(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
         if (extrahitboxes$getAnimatable() instanceof GeckoLibMultiPartEntity<?> multiPartEntity) {
             if (extrahitboxes$getAnimatable() instanceof GeckoLibMultiPartMob multiPartMob && !multiPartMob.moreHitboxes$isNewRenderTick()) {
                 return;
@@ -55,7 +55,7 @@ public abstract class GeoRendererMixin<T extends GeoAnimatable> {
     }
 
     @Inject(method = "actuallyRender", at = @At(value = "TAIL"))
-    public void updateTick(PoseStack poseStack, T animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
+    public default void updateTick(PoseStack poseStack, T animatable, BakedGeoModel model, @Nullable RenderType renderType, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
         if (animatable instanceof GeckoLibMultiPartMob multiPartMob) {
             multiPartMob.moreHitboxes$updateRenderTick();
         }
