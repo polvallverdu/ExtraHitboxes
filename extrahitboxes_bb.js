@@ -1,3 +1,10 @@
+/**
+ * This file contains code from DarkPred's project
+ * Original Copyright (c) 2024 DarkPred
+ * Modified by Pol (c) 2025
+ *
+ * Licensed under MIT License
+ */
 (function() {
     var exportHitboxAction = new Action({
         id: "export_hitbox",

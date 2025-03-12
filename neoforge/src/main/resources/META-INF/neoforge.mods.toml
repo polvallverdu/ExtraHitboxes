@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
 #issueTrackerURL = ""
-license = "Apache 2.0"
+license = "MIT"
 
 [[mods]]
 modId = "extrahitboxes"
