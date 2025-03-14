@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3d;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,13 +30,12 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 @Mixin(GeoRenderer.class)
 public interface GeoRendererMixin<T extends GeoAnimatable> {
 
-    @Unique
-    public abstract T extrahitboxes$getAnimatable();
+    @Shadow T getAnimatable();
 
     @Inject(method = "renderCubesOfBone", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lsoftware/bernie/geckolib/cache/object/GeoBone;isHidden()Z"))
-    public default void getBonePositions(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
-        if (extrahitboxes$getAnimatable() instanceof GeckoLibMultiPartEntity<?> multiPartEntity) {
-            if (extrahitboxes$getAnimatable() instanceof GeckoLibMultiPartMob multiPartMob && !multiPartMob.moreHitboxes$isNewRenderTick()) {
+    default void getBonePositions(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight, int packedOverlay, int colour, CallbackInfo ci) {
+        if (getAnimatable() instanceof GeckoLibMultiPartEntity<?> multiPartEntity) {
+            if (getAnimatable() instanceof GeckoLibMultiPartMob multiPartMob && !multiPartMob.moreHitboxes$isNewRenderTick()) {
                 return;
             }
             MultiPart<?> part = multiPartEntity.getEntityHitboxData().getCustomPart(bone.getName());
