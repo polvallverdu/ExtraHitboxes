@@ -6,11 +6,11 @@
   "client": [
     "AbstractClientPlayerMixin",
     "EntityRenderDispatcherMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "ClientEntityMixin",
+    "ClientMobMixin"
   ],
   "mixins": [
-    "ClientEntityMixin",
-    "ClientMobMixin",
     "EntityHitResultMixin",
     "EntityMixin",
     "GeckoLibMobMixin",
