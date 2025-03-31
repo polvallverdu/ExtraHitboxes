@@ -41,7 +41,10 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
         this.anchorData = new AnchorDataInternal<>(entity);
         this.fixPosOnRefresh = fixPosOnRefresh;
         this.usesAttackBounds = usesAttackBounds;
-        this.respawnHitBoxes();
+        List<HitboxData> hitboxData = HitboxDataLoader.HITBOX_DATA.getHitboxes(EntityType.getKey(entity.getType()));
+        if (hitboxData != null && !hitboxData.isEmpty()) {
+            spawnHitBoxes(hitboxData);
+        }
         makeAttackBounds();
         makeBoundingBoxForCulling();
     }
@@ -55,12 +58,6 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
             } else if (hitboxData.isAnchor()) {
                 anchorData.addAnchor(hitboxData.ref(), hitboxData);
             } else {
-                MultiPart<T> existingPart = this.partsByRef.get(hitboxData.ref());
-
-                if (existingPart != null && !existingPart.getEntity().isRemoved()) {
-                    continue;
-                }
-
                 MultiPart<T> part = Services.MULTI_PART.create(entity, hitboxData);
                 parts.add(part);
                 if (!hitboxData.ref().isBlank()) {
@@ -81,13 +78,6 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
         }
         frustumWidthRadius = maxFrustumWidthRadius;
         frustumHeight = maxFrustumHeight;
-    }
-
-    public void respawnHitBoxes() {
-        List<HitboxData> hitboxData = HitboxDataLoader.HITBOX_DATA.getHitboxes(EntityType.getKey(entity.getType()));
-        if (hitboxData != null && !hitboxData.isEmpty()) {
-            spawnHitBoxes(hitboxData);
-        }
     }
 
     @Override
