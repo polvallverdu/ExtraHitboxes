@@ -58,6 +58,8 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
                 MultiPart<T> existingPart = this.partsByRef.get(hitboxData.ref());
 
                 if (existingPart != null && !existingPart.getEntity().isRemoved()) {
+                    this.partsByRef.remove(hitboxData.ref());
+                    this.parts.remove(existingPart);
                     continue;
                 }
 
