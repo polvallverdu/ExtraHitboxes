@@ -58,15 +58,17 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
                 MultiPart<T> existingPart = this.partsByRef.get(hitboxData.ref());
 
                 if (existingPart != null && !existingPart.getEntity().isRemoved()) {
-                    this.partsByRef.remove(hitboxData.ref());
-                    this.parts.remove(existingPart);
                     continue;
                 }
 
+
                 MultiPart<T> part = Services.MULTI_PART.create(entity, hitboxData);
                 parts.add(part);
+                this.parts.remove(existingPart);
                 if (!hitboxData.ref().isBlank()) {
                     partsByRef.put(hitboxData.ref(), part);
+                } else {
+                    partsByRef.put(hitboxData.name(), part);
                 }
                 float w = hitboxData.getFrustumWidthRadius();
                 if (hitboxData.name().contains("head") && (headRadius == 0 || w > maxFrustumWidthRadius)) {
