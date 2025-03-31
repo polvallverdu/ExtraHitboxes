@@ -123,6 +123,16 @@ public class ForgeMultiPart<T extends Mob & MultiPartEntity<T>> extends PartEnti
     }
 
     @Override
+    public void disable() {
+        this.remove(RemovalReason.DISCARDED);
+    }
+
+    @Override
+    public void enable() {
+        this.revive();
+    }
+
+    @Override
     protected void readAdditionalSaveData(@NotNull CompoundTag compound) {
 
     }

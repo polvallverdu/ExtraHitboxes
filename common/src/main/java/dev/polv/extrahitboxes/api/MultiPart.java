@@ -74,4 +74,14 @@ public interface MultiPart<T extends Mob & MultiPartEntity<T>> {
     interface Factory {
         <T extends Mob & MultiPartEntity<T>> MultiPart<T> create(T parent, HitboxData hitboxData);
     }
+
+    /**
+     * Will remove the part (entity)
+     */
+    void disable();
+
+    /**
+     * Will revive the part (entity)
+     */
+    void enable();
 }
