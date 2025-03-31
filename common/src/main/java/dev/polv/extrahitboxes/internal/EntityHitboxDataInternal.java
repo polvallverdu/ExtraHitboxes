@@ -83,7 +83,6 @@ public class EntityHitboxDataInternal<T extends Mob & MultiPartEntity<T>> implem
         frustumHeight = maxFrustumHeight;
     }
 
-    @Override
     public void respawnHitBoxes() {
         List<HitboxData> hitboxData = HitboxDataLoader.HITBOX_DATA.getHitboxes(EntityType.getKey(entity.getType()));
         if (hitboxData != null && !hitboxData.isEmpty()) {

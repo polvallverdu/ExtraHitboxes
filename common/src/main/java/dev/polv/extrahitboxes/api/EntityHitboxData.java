@@ -87,9 +87,4 @@ public interface EntityHitboxData<T extends Mob & MultiPartEntity<T>> {
 
     @ApiStatus.Internal
     boolean fixPosOnRefresh();
-
-    /**
-     * Respawns removed hitboxes
-     */
-    void respawnHitBoxes();
 }
