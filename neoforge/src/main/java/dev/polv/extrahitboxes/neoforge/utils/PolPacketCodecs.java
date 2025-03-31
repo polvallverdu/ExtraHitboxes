@@ -43,7 +43,7 @@ public class PolPacketCodecs {
     };
 
     public static <T> StreamCodec<ByteBuf, List<T>> createListPacketCodec(StreamCodec<ByteBuf, T> elementCodec) {
-        return new StreamCodec<>() {
+        return new StreamCodec<ByteBuf, List<T>>() {
             public List<T> decode(ByteBuf byteBuf) {
                 int amount = byteBuf.readInt();
                 List<T> list = new ArrayList<>(amount);
